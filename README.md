@@ -14,7 +14,7 @@ This README provides a step-by-step guide to create a new React application usin
 
 ---
 
-## Follow the steps to create the **headless-xpm-react** by following the steps or checkout our example-react-app
+Follow the steps to create the **headless-xpm-react** by following the steps or checkout our example-react-app
 
 ## Installation
 
