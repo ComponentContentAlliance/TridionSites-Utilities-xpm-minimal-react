@@ -1,7 +1,7 @@
 # TridionSites-Utilities-xpm-minimal-react
 This project enables Tridion CMS Websites to have the direct navigation to Experience Space from the website pages
 
-# Vite React App with Headless Tridion Integration
+## Vite React App with Headless Tridion Integration
 
 This README provides a step-by-step guide to create a new React application using **Vite**, and integrate the <a href="https://www.npmjs.com/package/headless-xpm-react" target="_blank">`headless-xpm-react`</a> package to enable Tridion Experience Space (XPM) editing features.
 
