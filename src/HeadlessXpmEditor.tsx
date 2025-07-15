@@ -10,7 +10,7 @@ interface Props {
 
 const HeadlessXpmEditor: React.FC<Props> = ({ tcmId, children, isPage = false }) => {
 
-    const { editorUrl, icon, containerStyle, linkStyle, contentStyle, iconStyle, showExpSpaceEditor, toggleXpm, setPageId, setShowPage } = useHeadlessXpmContext();
+    const { editorUrl, icon, containerStyle, linkStyle, contentStyle, iconStyle, showExpSpaceEditor, toggleXpm, setPageId, setShowPage, staging } = useHeadlessXpmContext();
 
     const link = `${editorUrl}/component?item=${tcmId}&tab=general.content`;
     const toggleStyle = {
@@ -19,17 +19,16 @@ const HeadlessXpmEditor: React.FC<Props> = ({ tcmId, children, isPage = false })
 
     useEffect(() => {
         if (isPage) {
-          setShowPage(true);
-          setPageId(tcmId)
+            setShowPage(true);
+            setPageId(tcmId)
         }
-      }, [isPage, tcmId]);
+    }, [isPage, tcmId]);
     return (
-        <div className={styles.headlessXpmRegion} style={containerStyle}>
+        staging ? <div className={styles.headlessXpmRegion} style={containerStyle}>
 
             {(toggleXpm || !showExpSpaceEditor) &&
                 <a
                     href={link}
-                    //className={isPage ? `${styles.headlessXpmIcon} ${styles.headlessXpmIconAlignLeft}` : styles.headlessXpmIcon}
                     className={styles.headlessXpmIcon}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -51,6 +50,8 @@ const HeadlessXpmEditor: React.FC<Props> = ({ tcmId, children, isPage = false })
                 {children}
             </div>
         </div>
+            :
+            children
     );
 };
 

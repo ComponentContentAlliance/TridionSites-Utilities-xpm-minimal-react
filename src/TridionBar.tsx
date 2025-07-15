@@ -9,7 +9,7 @@ interface ITridionBarProps {
 
 export const TridionBar = ({ setToggleXpm, toggleXpm }: ITridionBarProps) => {
 
-  const { showPageEditorLink, editorUrl, pageId, showPage } = useHeadlessXpmContext();
+  const { showPageEditorLink, editorUrl, pageId, showPage  } = useHeadlessXpmContext();
 
   const handlePage = () => {
     if (showPage) {
