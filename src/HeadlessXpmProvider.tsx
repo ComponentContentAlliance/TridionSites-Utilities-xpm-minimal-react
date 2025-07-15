@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { TridionBar } from "./TridionBar";
 
 interface HeadlessXpmContextProps {
@@ -11,10 +11,12 @@ interface HeadlessXpmContextProps {
   showExpSpaceEditor: boolean;
   showPageEditorLink?: boolean
   toggleXpm: boolean;
-  pageId:string;
-  showPage:boolean;
-  setPageId:(pageId:string) => void;
-  setShowPage:(setShowPage:boolean) => void;
+  pageId: string;
+  showPage: boolean;
+  setPageId: (pageId: string) => void;
+  setShowPage: (setShowPage: boolean) => void;
+  staging: boolean
+
 }
 
 const HeadlessXpmContext = createContext<undefined | HeadlessXpmContextProps>(undefined);
@@ -36,19 +38,20 @@ type ProviderProps = {
   contentStyle?: React.CSSProperties;
   iconStyle?: React.CSSProperties;
   showExpSpaceEditor?: boolean;
-  showPageEditorLink?: boolean
+  showPageEditorLink?: boolean;
+  staging: boolean
 };
 
-export const HeadlessXpmProvider: React.FC<ProviderProps> = ({ editorUrl, icon, children, linkStyle, containerStyle, contentStyle, iconStyle, showPageEditorLink = false, showExpSpaceEditor = true }) => {
+export const HeadlessXpmProvider: React.FC<ProviderProps> = ({ editorUrl, icon, children, linkStyle, containerStyle, contentStyle, iconStyle, showPageEditorLink = false, showExpSpaceEditor = true, staging = false }) => {
   const [toggleXpm, setToggleXpm] = useState<boolean>(false);
   const [showPage, setShowPage] = useState(false);
   const [pageId, setPageId] = useState<string>("");
 
   return (
     <HeadlessXpmContext.Provider
-      value={{ editorUrl, icon, linkStyle, containerStyle, contentStyle, iconStyle, showExpSpaceEditor, showPageEditorLink, toggleXpm, pageId, showPage, setPageId, setShowPage }}>
+      value={{ editorUrl, icon, linkStyle, containerStyle, contentStyle, iconStyle, showExpSpaceEditor, showPageEditorLink, toggleXpm, pageId, showPage, setPageId, setShowPage, staging }}>
       {children}
-      {showExpSpaceEditor && <TridionBar setToggleXpm={setToggleXpm} toggleXpm={toggleXpm} />}
+      {staging && (showExpSpaceEditor && <TridionBar setToggleXpm={setToggleXpm} toggleXpm={toggleXpm} />)}
     </HeadlessXpmContext.Provider>
   );
 };
