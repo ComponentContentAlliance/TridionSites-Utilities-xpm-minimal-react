@@ -12,7 +12,8 @@ const HeadlessXpmEditor: React.FC<Props> = ({ tcmId, children, isPage = false })
 
     const { editorUrl, icon, containerStyle, linkStyle, contentStyle, iconStyle, showExpSpaceEditor, toggleXpm, setPageId, setShowPage, staging } = useHeadlessXpmContext();
 
-    const link = `${editorUrl}/component?item=${tcmId}&tab=general.content`;
+    const link = isPage ? `${editorUrl}/page?item=${tcmId}&tab=general.content` : `${editorUrl}/component?item=${tcmId}&tab=general.content`;
+    
     const toggleStyle = {
         opacity: (toggleXpm || !showExpSpaceEditor) ? 1 : 0
     }

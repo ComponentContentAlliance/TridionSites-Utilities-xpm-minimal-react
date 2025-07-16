@@ -52,6 +52,7 @@ npm install axios
         VITE_TRIDION_SITES_GRAPHQL_URL=https://domain:8081/cd/api
         VITE_TRIDION_SITES_PUBLICATION_ID=5
         VITE_TRIDION_SITES_COMPONENT_ID=283
+        VITE_TRIDION_SITES_STAGING=true
     ```
 
     > These values are used to configure the editor and backend data sources.
@@ -166,7 +167,7 @@ npm install axios
             return(
                 <HeadlessXpmProvider
                     editorUrl={import.meta.env.VITE_EXP_SPACE_EDITOR_URL}
-                    staging={true}
+                    staging={import.meta.env.VITE_TRIDION_SITES_STAGING}
                     showExpSpaceEditor={true}
                     showPageEditorLink={true}
                 >
@@ -180,7 +181,7 @@ npm install axios
     - editorUrl: import.meta.env.VITE_EXP_SPACE_EDITOR_URL : Tridion sites experience space editor url
 	- showExpSpaceEditor : Show/Hide bottom Tridion Bar
 	- showPageEditorLink: Show/hide page edit button in the bottom Tridion Bar
-	
+	- staging: import.meta.env.VITE_TRIDION_SITES_STAGING : Enable/disable the headless xpm
 ---
 
 ### Fetch Component Data
@@ -229,7 +230,7 @@ npm install axios
             return(
                 <HeadlessXpmProvider 
                     editorUrl={import.meta.env.VITE_EXP_SPACE_EDITOR_URL} 
-                    staging={true}
+                    staging={import.meta.env.VITE_TRIDION_SITES_STAGING}
                     showExpSpaceEditor={true} 
                     showPageEditorLink={true} 
                 >
@@ -259,7 +260,10 @@ npm install axios
 
         const CardComponent = ({ componentData }: CardComponentProps) => {
             return (
-                <HeadlessXpmEditor tcmId={`tcm:${componentData?.publicationId}-${componentData?.itemId}`}>
+                <HeadlessXpmEditor 
+                    tcmId={`tcm:${componentData?.publicationId}-${componentData?.itemId}`} 
+                    isPage={true} // isPage true Enables page for editing and false for component
+                > 
                     <div>
                         <h2>{componentData?.headline}</h2>
                         <div
@@ -316,7 +320,7 @@ npm install axios
             return(
                  <HeadlessXpmProvider 
                     editorUrl={import.meta.env.VITE_EXP_SPACE_EDITOR_URL} 
-                    staging={true}
+                    staging={import.meta.env.VITE_TRIDION_SITES_STAGING}
                     showExpSpaceEditor={true} 
                     showPageEditorLink={true} 
                 >
