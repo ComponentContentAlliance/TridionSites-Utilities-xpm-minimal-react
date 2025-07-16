@@ -2,7 +2,7 @@
 
 This React application demonstrates how to use the `headless-xpm-react` package to make components editable in RWS Tridion Experience Space.
 
-Follow the steps to use the **headless-xpm-react** or checkout our example-react-app
+Follow the steps to use the **headless-xpm-react** or checkout our example-react-app.
 
 ##  Prerequisites
 
@@ -37,6 +37,10 @@ Follow the steps to use the **headless-xpm-react** or checkout our example-react
     VITE_TRIDION_SITES_PUBLICATION_ID=5
 
     VITE_TRIDION_SITES_COMPONENT_ID=283
+    ```
+
+    ```env
+    VITE_TRIDION_SITES_STAGING=true
     ```
 ---
 
@@ -133,7 +137,9 @@ Visit to http://localhost:4200
     const CardComponent = ({ componentData }: CardComponentProps) => {
         return (
             <HeadlessXpmEditor 
-                tcmId={`tcm:${componentData?.publicationId}-${componentData?.itemId}`}>
+                tcmId={`tcm:${componentData?.publicationId}-${componentData?.itemId}`}
+                isPage={true} // isPage true allows to navigate to page and false navigates to Component
+                >
                 <Card className="w-full h-auto hover:border-[#007373] shadow-lg">
                     <CardHeader>
                         <CardTitle className="mt-2">{componentData?.headline}</CardTitle>
@@ -159,4 +165,4 @@ Visit to http://localhost:4200
 
 ## Exmaple React App
 
-- Navigate to Example folder 
+- Navigate to Tridion Sites headless XPM <a href="https://github.com/ComponentContentAlliance/TridionSites-Utilities-xpm-minimal-react/tree/main/examples" target="_blank">Github</a> for Examples 

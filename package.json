@@ -1,6 +1,6 @@
 {
   "name": "headless-xpm-react",
-  "version": "1.2.2",
+  "version": "1.2.4",
   "description": "A reusable wrapper button to make Tridion sites react app page components editable.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
