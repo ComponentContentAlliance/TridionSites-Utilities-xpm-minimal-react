@@ -23,7 +23,7 @@
 - Fixed HeadlessXpmEditor.tsx import error for next app using react types "@types/react": "^18.2.37", "@types/react-dom": "^18.2.18"
 - removed the local-package-publisher module,
 
-## 2.0.3 
+## 2.0.4 
 
 ### Removed
 

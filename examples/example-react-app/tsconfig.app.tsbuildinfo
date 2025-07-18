@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/typedcompnentquery.ts","./src/typedcomponentqueryvariables.ts","./src/types.ts","./src/vite-env.d.ts","./src/components/cardcomponent.tsx","./src/components/ui/button.tsx","./src/components/ui/card.tsx","./src/components/ui/navigation-menu.tsx","./src/lib/utils.ts"],"version":"5.8.3"}
