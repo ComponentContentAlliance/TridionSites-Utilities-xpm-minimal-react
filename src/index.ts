@@ -1,2 +1,4 @@
-export { default as HeadlessXpmEditor } from "./HeadlessXpmEditor";
-export { HeadlessXpmProvider } from "./HeadlessXpmProvider";
+import { HeadlessXpmEditor } from "./HeadlessXpmEditor";
+import { HeadlessXpmProvider } from "./HeadlessXpmProvider";
+
+export { HeadlessXpmProvider, HeadlessXpmEditor }

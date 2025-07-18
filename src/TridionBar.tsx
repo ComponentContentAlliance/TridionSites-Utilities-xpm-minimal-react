@@ -1,11 +1,47 @@
 import { useHeadlessXpmContext } from "./HeadlessXpmProvider";
-import styles from "./HeadlessXpmEditor.module.css";
-import Logo from "./assets/rws-brand-icon.png";
-
-interface ITridionBarProps {
+export interface ITridionBarProps {
   toggleXpm: boolean;
   setToggleXpm: (showTridionBar: boolean) => void;
 }
+export const tridionBarStyles = {
+
+  headlessXpmBar: {
+      background: "#007373",
+      width: "100%",
+      position: "fixed",
+      bottom: 0,
+      padding: "10px 30px"
+  },
+  headlessXpmBarContainer: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "flex-start",
+      gap: "30px"
+  },
+  headlessXpmBarButtonGroup: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "15px"
+  },
+  headlessXpmBarButton: {
+      cursor: "pointer",
+      color: "#fff",
+      fontWeight: "bold",
+      fontSize: "18px",
+      background: "#034545",
+      padding: "8px 22px",
+      borderRadius: "3px",
+      border: "1px solid #eee",
+      display: "flex"
+  },
+  headlessXpmBrandLogo: {
+      // Empty — add if needed
+  },
+  headlessXpmContent: {
+      // Empty — add if needed
+  }
+};
 
 export const TridionBar = ({ setToggleXpm, toggleXpm }: ITridionBarProps) => {
 
@@ -18,14 +54,14 @@ export const TridionBar = ({ setToggleXpm, toggleXpm }: ITridionBarProps) => {
     }
   }
   return (
-    <div className={styles.headlessXpmBar}>
-      <div className={styles.headlessXpmBarContainer}>
-        <div className={styles.headlessXpmBrandLogo}>
-          <img src={Logo} title="logo" width="30" height="34" />
+    <div className="headlessXpmBar" style={{...tridionBarStyles.headlessXpmBar} as React.CSSProperties}>
+      <div className="headlessXpmBarContainer" style={{...tridionBarStyles.headlessXpmBarContainer} as React.CSSProperties}>
+        <div className="headlessXpmBrandLogo" style={{...tridionBarStyles.headlessXpmBrandLogo} as React.CSSProperties}>
+          {/* <img src={Logo} title="logo" width="30" height="34" /> */}
         </div>
-        <div className={styles.headlessXpmBarButtonGroup}>
+        <div className="headlessXpmBarButtonGroup" style={{...tridionBarStyles.headlessXpmBarButtonGroup} as React.CSSProperties}>
           {showPageEditorLink &&
-            <button className={styles.headlessXpmBarButton} onClick={handlePage}>
+            <button className="headlessXpmBarButton" onClick={handlePage} style={{...tridionBarStyles.headlessXpmBarButton} as React.CSSProperties}>
               <svg viewBox="64 64 896 896" focusable="false" data-icon="form" width="1em" height="1em" fill="currentColor" aria-hidden="true">
                 <path
                   d="M904 512h-56c-4.4 0-8 3.6-8 8v320H184V184h320c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V520c0-4.4-3.6-8-8-8z">
@@ -36,7 +72,7 @@ export const TridionBar = ({ setToggleXpm, toggleXpm }: ITridionBarProps) => {
               </svg>
             </button>
           }
-          <button className={styles.headlessXpmBarButton} onClick={() => setToggleXpm(!toggleXpm)} title="Edit Components">
+          <button className="headlessXpmBarButton" onClick={() => setToggleXpm(!toggleXpm)} title="Edit Components"  style={{...tridionBarStyles.headlessXpmBarButton} as React.CSSProperties}>
             <svg viewBox="64 64 896 896" focusable="false" data-icon="edit" width="1em" height="1em" fill="currentColor"
               aria-hidden="true">
               <path
