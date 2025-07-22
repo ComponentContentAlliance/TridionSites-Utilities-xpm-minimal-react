@@ -86,7 +86,7 @@ export const HeadlessXpmEditor = ({ tcmId, children, isPage = false }: HeadlessX
     const link = isPage ? `${editorUrl}/page?item=${tcmId}&tab=general.content` : `${editorUrl}/component?item=${tcmId}&tab=general.content`;
 
     const toggleStyle = {
-        opacity: (toggleXpm || !showExpSpaceEditor) ? 1 : 0
+        opacity: toggleXpm ? 1 : 0
     }
 
     useEffect(() => {
@@ -97,20 +97,22 @@ export const HeadlessXpmEditor = ({ tcmId, children, isPage = false }: HeadlessX
     }, [isPage, tcmId]);
 
     useEffect(() => {
-        setHovered(!isHovered)
-    },[toggleXpm])
+        if (toggleXpm) {
+            setHovered(true)
+        }
+    }, [toggleXpm])
     if (!staging) return <>{children}</>;
 
     return (
-        <div 
+        <div
             className="headlessXpmRegion"
             style={{
-                ...containerStyle, 
+                ...containerStyle,
                 ...inlineStyles.headlessXpmRegion,
-                ...(isHovered ? inlineStyles.headlessXpmRegionHover : {}) 
-            } as React.CSSProperties} 
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}>
+                ...(isHovered ? inlineStyles.headlessXpmRegionHover : {})
+            } as React.CSSProperties}
+            onMouseEnter={() => toggleXpm && setHovered(true)}
+            onMouseLeave={() => toggleXpm && setHovered(false)}>
 
             {(toggleXpm || !showExpSpaceEditor) &&
                 <a
@@ -135,7 +137,7 @@ export const HeadlessXpmEditor = ({ tcmId, children, isPage = false }: HeadlessX
                     }
                 </a>
             }
-            <div className="headlessXpmContent" style={{...contentStyle, ...inlineStyles.headlessXpmContent}}>
+            <div className="headlessXpmContent" style={{  ...contentStyle, ...inlineStyles.headlessXpmContent }}>
                 {children}
             </div>
         </div>

@@ -29,6 +29,11 @@
 
 - Tridion logo removed as the image link was broken
 
+## 2.0.7 (2025-07-22)
+
+### Fixed
+
+- Border was getting highlighted on hover of the page/components without enabling the editing
 
 
 
