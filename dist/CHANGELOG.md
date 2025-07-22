@@ -23,12 +23,17 @@
 - Fixed HeadlessXpmEditor.tsx import error for next app using react types "@types/react": "^18.2.37", "@types/react-dom": "^18.2.18"
 - removed the local-package-publisher module,
 
-## 2.0.4 
+## 2.0.3 
 
 ### Removed
 
 - Tridion logo removed as the image link was broken
 
+## 2.0.7 (2025-07-22)
+
+### Fixed
+
+- Border was getting highlighted on hover of the page/components without enabling the editing
 
 
 
