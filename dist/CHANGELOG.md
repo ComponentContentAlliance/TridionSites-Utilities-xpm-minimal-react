@@ -35,6 +35,12 @@
 
 - Border was getting highlighted on hover of the page/components without enabling the editing
 
+## 2.0.8
+
+### Updated
+
+- Showing border highlight only after enabling the editing and hovering the component
+
 
 
 

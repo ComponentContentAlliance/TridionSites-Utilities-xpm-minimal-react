@@ -1,93 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import type { ReactNode } from "react";
 import { useHeadlessXpmContext } from "./HeadlessXpmProvider";
+import './HeadlessXpmEditor.css';
 
 export interface HeadlessXpmEditorProps {
     tcmId: string;
     children: ReactNode
     isPage?: boolean;
 }
-export const inlineStyles = {
-    headlessXpmRegion: {
-        position: "relative",
-        border: "1px solid transparent",
-        transition: "border-color 0.2s ease"
-    },
-    headlessXpmRegionHover: {
-        border: "2px solid #17c13e",
-        boxShadow: "0 0 0 1px #17c13e"
-    },
-    headlessXpmIcon: {
-        position: "absolute",
-        top: "6px",
-        right: "6px",
-        background: "#007373",
-        padding: "4px",
-        borderRadius: "4px",
-        textDecoration: "none",
-        zIndex: 999,
-        transition: "opacity 0.3s ease",
-        color: "#ffffff",
-        height: "32px",
-        width: "32px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-    },
-    headlessXpmIconAlignLeft: {
-        left: "0px"
-    },
-    headlessXpmIconVisible: {
-        opacity: 1,
-        color: "#fff"
-    },
-    headlessXpmBar: {
-        background: "#007373",
-        width: "100%",
-        position: "fixed",
-        bottom: 0,
-        padding: "10px 30px"
-    },
-    headlessXpmBarContainer: {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "flex-start",
-        gap: "30px"
-    },
-    headlessXpmBarButtonGroup: {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "15px"
-    },
-    headlessXpmBarButton: {
-        cursor: "pointer",
-        color: "#fff",
-        fontWeight: "bold",
-        fontSize: "18px",
-        background: "#034545",
-        padding: "8px 22px",
-        borderRadius: "3px",
-        border: "1px solid #eee",
-        display: "flex"
-    },
-    headlessXpmBrandLogo: {
-        // Empty — add if needed
-    },
-    headlessXpmContent: {
-        // Empty — add if needed
-    }
-};
 
 export const HeadlessXpmEditor = ({ tcmId, children, isPage = false }: HeadlessXpmEditorProps): JSX.Element => {
-    const [isHovered, setHovered] = useState(false);
     const { editorUrl, icon, containerStyle, linkStyle, contentStyle, iconStyle, showExpSpaceEditor, toggleXpm, setPageId, setShowPage, staging } = useHeadlessXpmContext();
 
     const link = isPage ? `${editorUrl}/page?item=${tcmId}&tab=general.content` : `${editorUrl}/component?item=${tcmId}&tab=general.content`;
-
-    const toggleStyle = {
-        opacity: toggleXpm ? 1 : 0
-    }
 
     useEffect(() => {
         if (isPage) {
@@ -96,24 +21,13 @@ export const HeadlessXpmEditor = ({ tcmId, children, isPage = false }: HeadlessX
         }
     }, [isPage, tcmId]);
 
-    useEffect(() => {
-        if (toggleXpm) {
-            setHovered(true)
-        }
-    }, [toggleXpm])
     if (!staging) return <>{children}</>;
 
     return (
         <div
-            className="headlessXpmRegion"
-            style={{
-                ...containerStyle,
-                ...inlineStyles.headlessXpmRegion,
-                ...(isHovered ? inlineStyles.headlessXpmRegionHover : {})
-            } as React.CSSProperties}
-            onMouseEnter={() => toggleXpm && setHovered(true)}
-            onMouseLeave={() => toggleXpm && setHovered(false)}>
-
+            className={`headlessXpmRegion ${toggleXpm || !showExpSpaceEditor ? "hover-enabled" : ""}`}
+            style={{ containerStyle } as React.CSSProperties}
+        >
             {(toggleXpm || !showExpSpaceEditor) &&
                 <a
                     href={link}
@@ -122,10 +36,7 @@ export const HeadlessXpmEditor = ({ tcmId, children, isPage = false }: HeadlessX
                     rel="noopener noreferrer"
                     title="Edit in Experiance sapce"
                     style={{
-                        ...toggleStyle,
                         ...linkStyle,
-                        ...inlineStyles.headlessXpmIcon,
-                        opacity: toggleXpm ? 1 : isHovered ? 1 : 0,
                         transition: "opacity 0.3s ease",
                     } as React.CSSProperties}
                 >
@@ -137,7 +48,7 @@ export const HeadlessXpmEditor = ({ tcmId, children, isPage = false }: HeadlessX
                     }
                 </a>
             }
-            <div className="headlessXpmContent" style={{  ...contentStyle, ...inlineStyles.headlessXpmContent }}>
+            <div className="headlessXpmContent" style={{ ...contentStyle }}>
                 {children}
             </div>
         </div>
