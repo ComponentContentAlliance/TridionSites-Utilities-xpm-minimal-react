@@ -1,45 +1,41 @@
 {
   "name": "headless-xpm-react",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "A reusable wrapper button to make Tridion sites react app page components editable.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
-    }
-  },
+  "style": "dist/HeadlessXpmEditor.css",
   "files": [
     "dist",
+    "dist/HeadlessXpmEditor.css",
     "README.md",
     "CHANGELOG.md"
   ],
+  "sideEffects": [
+    "dist/HeadlessXpmEditor.css",
+    "**/*.css"
+  ],
   "scripts": {
-    "build": "rollup -c --bundleConfigAsCjs"
+    "build": "rollup -c"
   },
-  "author": "RWS",
-  "license": "MIT",
   "peerDependencies": {
-    "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0"
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^26.0.1",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-terser": "^0.4.4",
-    "@rollup/plugin-typescript": "^11.1.6",
-    "@types/react": "^18.3.23",
-    "@types/react-dom": "^18.3.7",
-    "cpx": "^1.5.0",
-    "rollup": "^4.18.1",
-    "rollup-plugin-copy": "^3.5.0",
-    "rollup-plugin-dts": "^6.1.1",
+    "@rollup/plugin-commonjs": "^28.0.6",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@types/react": "^18.2.41",
+    "@types/react-dom": "^18.2.17",
+    "rollup": "^3.29.5",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "tslib": "^2.6.3",
-    "typescript": "^5.5.3"
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-typescript2": "^0.35.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "rollup-plugin-copy": "^3.5.0"
   },
   "repository": {
     "type": "git",

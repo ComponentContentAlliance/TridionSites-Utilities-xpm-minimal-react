@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 
-import  { createContext, useContext, useState, CSSProperties } from "react";
+import { createContext, useContext, useState, CSSProperties } from "react";
 import type { ReactNode } from "react";
 import { TridionBar } from "./TridionBar";
 import { toBoolean } from "./toBoolean";
