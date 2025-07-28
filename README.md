@@ -49,13 +49,15 @@ Follow the steps to use the **headless-xpm-react** or checkout our example-react
 
 ### Install Dependencies
         
-    npm install
+```sh
+npm install headless-xpm-react
+```
 
 ### Run the App
 
     npm run dev
 		
-Visit to http://localhost:4200		
+Visit to http://localhost:{PORT}		
 		
 ---		
 		
@@ -120,10 +122,6 @@ Visit to http://localhost:4200
 | `editorUrl`          | `string`              | URL to open in Experience Space | ✅ Yes                   |
 | `children`           | `React.ReactNode`     | Children to wrap                | ✅ Yes                   |
 | `staging`            | `boolean`             | Enable/Disable the headless xpm | ❌ No (default: `false`) | 
-| `linkStyle`          | `React.CSSProperties` | Custom style for the link icon  | ❌ No                    |
-| `iconStyle`          | `React.CSSProperties` | Style for the icon              | ❌ No                    |
-| `containerStyle`     | `React.CSSProperties` | Wrapper div style               | ❌ No                    |
-| `contentStyle`       | `React.CSSProperties` | Content wrapper style           | ❌ No                    |
 | `icon`               | `React.ReactNode`     | Custom SVG/icon                 | ❌ No                    |
 | `showExpSpaceEditor` | `boolean`             | Show bottom toolbar             | ❌ No (default: `true`)  |
 | `showPageEditorLink` | `boolean`             | Show page edit button           | ❌ No (default: `false`) |
@@ -156,11 +154,15 @@ Visit to http://localhost:4200
 
 ### `<HeadlessXpmEditor />` Props
 
-| Prop       | Type              | Description                         | Required?               |
-| ---------- | ----------------- | ----------------------------------- | ----------------------- |
-| `tcmId`    | `string`          | TCM URI of the component or page    | ✅ Yes                   |
-| `children` | `React.ReactNode` | Editable content                    | ✅ Yes                   |
-| `isPage`   | `boolean`         | Whether this is a Page or Component | ❌ No (default: `false`) |
+| Prop                 | Type                  | Description                         | Required?                     |
+| ---------------------| ----------------------| ----------------------------------- | --------------------------    |
+| `tcmId`              | `string`              | TCM URI of the component or page    | ✅ Yes                       |
+| `children`           | `React.ReactNode`     | Editable content                    | ✅ Yes                       |
+| `isPage`             | `boolean`             | Whether this is a Page or Component | ❌ No (default: `false`)     |
+| `linkStyle`          | `React.CSSProperties` | Custom style for the link icon      | ❌ No                        |
+| `iconStyle`          | `React.CSSProperties` | Style for the icon                  | ❌ No                        |
+| `containerStyle`     | `React.CSSProperties` | Wrapper div style                   | ❌ No                        |
+| `contentStyle`       | `React.CSSProperties` | Content wrapper style               | ❌ No                        |
 
 
 
