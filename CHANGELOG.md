@@ -41,6 +41,19 @@
 
 - Showing border highlight only after enabling the editing and hovering the component
 
+## 2.1.0 (2025-07-25)
+
+### Fixed
+
+- Fixed custom styles
+
+## 2.1.1 (2025-07-28)
+
+### Updated
+
+- Moved custom styles from HeadlessXpmProvider to HeadlessXpmEditor
+
+
 
 
 
